@@ -1,0 +1,121 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font: 400;
+}
+
+.background-main {
+  background-color: #ffffff;
+  height: 100%;
+}
+
+.background-fit {
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+.mat-toolbar {
+  position: relative;
+  z-index: 5;
+}
+
+.mat-h1 {
+  font-weight: bold;
+  font-size: 40px;
+  color: white;
+}
+
+.mat-h2 {
+  font-size: 20px;
+  font-weight: 300;
+  color: white;
+}
+
+.mat-h1-green {
+  font-weight: bold;
+  font-size: 100px;
+  color: green;
+}
+
+.mat-h1-orange {
+  font-weight: bold;
+  font-size: 100px;
+  color: orange;
+}
+
+.mat-h1-red {
+  font-weight: bold;
+  font-size: 100px;
+  color: red;
+}
+
+.description-box {
+  padding-top: 10%;
+  justify-content: center;
+}
+
+.card-description {
+  width: 200px;
+  height: 300px;
+}
+
+.card-row {
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+.content-item {
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+
+/*------Form styles------*/
+.form-card {
+  padding-top: 5%;
+}
+
+.form-card-content {
+  width: 100%;
+}
+
+.btn-box {
+  justify-content: space-between;
+  align-items: baseline;
+  flex-direction: row;
+  display: flex;
+  width: 100%;
+}
+
+/*------Issue styles------*/
+.issue-label {
+  color: white;
+  font-weight: lighter;
+  width: 60px;
+  height: 30px;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 3px;
+  font-size: 15px;
+}
+
+.issue-label-open {
+background-color: #2c974b;
+}
+
+.issue-label-solved {
+background-color: #8250df;
+}
+
+/*------Voting------*/
+.upvote-active {
+  background-color: #ff9000;
+  color: white;
+}

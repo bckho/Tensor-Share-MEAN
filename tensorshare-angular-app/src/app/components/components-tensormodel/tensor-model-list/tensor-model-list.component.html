@@ -1,0 +1,22 @@
+<div *ngIf="tensorModels != undefined">
+    <mat-list>
+        <mat-divider></mat-divider>
+        <div *ngIf="tensorModels.length > 0">
+            <mat-list-item *ngFor="let tm of tensorModels">
+                <div routerLink="/{{tm.user.username}}/TensorModels/{{tm._id}}" mat-list-icon class="tensor-item-logo-box text-center">
+                    <h3>{{tm.name.toUpperCase()[0]}}</h3>
+                </div>
+                <a routerLink="/{{tm.user.username}}/TensorModels/{{tm._id}}" mat-line class="tensor-item-title">{{tm.user.username}} / <span
+                        class="tensor-item-name">{{tm.name}}</span> </a>
+                <small mat-line class="tensor-item-description">{{sliceDescription(tm.description)}}</small>
+                <small>👍 {{tm.upvotes.length}}</small>
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </div>
+    </mat-list>
+    <div class="tensor-list-empty-display" *ngIf="tensorModels.length === 0">
+        <h2>No Tensor Models found...</h2>
+        <br />
+        <p style="color: gray;">Time to create a new Tensor Model!</p>
+    </div>
+</div>

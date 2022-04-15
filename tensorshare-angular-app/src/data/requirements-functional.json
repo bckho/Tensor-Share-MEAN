@@ -1,0 +1,90 @@
+[
+    {
+        "id": "TS-FR-01",
+        "description": "Als gebruiker wil ik een nieuwe account kunnen registreren zodat ik voor het eerst gebruik kan maken van het platform."
+    },
+    {
+        "id": "TS-FR-02",
+        "description": "Als gebruiker wil ik kunnen inloggen zodat ik acties kan uitvoeren binnen het platform."
+    },
+    {
+        "id": "TS-FR-03",
+        "description": "Als gebruiker wil ik mijn eigen Tensor Models in een lijst inzien zodat ik weet welke Tensor Models ik gemaakt heb."
+    },
+    {
+        "id": "TS-FR-04",
+        "description": "Als gebruiker wil ik Tensor Models van andere gebruikers in een lijst kunnen inzien zodat ik nieuwe Tensor Models kan ontdekken."
+    },
+    {
+        "id": "TS-FR-05",
+        "description": "Als gebruiker wil ik de details van een Tensor Model kunnen inzien zodra ik op een Tensor Model klik vanuit een lijst zodat ik de details kan weten van de Tensor Model."
+    },
+    {
+        "id": "TS-FR-06",
+        "description": "Als gebruiker wil ik een nieuwe Tensor Model kunnen aanmaken zodat ik een nieuwe Tensor Model kan opslaan binnen het systeem."
+    },
+    {
+        "id": "TS-FR-07",
+        "description": "Als gebruiker wil ik een eigen Tensor Model kunnen bijwerken zodat de Tensor Model de meest up-to-date informatie bevat."
+    },
+    {
+        "id": "TS-FR-08",
+        "description": "Als gebruiker wil ik een eigen Tensor Model kunnen verwijderen zodat ik de Tensor Model niet meer kan weergeven op mijn account."
+    },
+    {
+        "id": "TS-FR-09",
+        "description": "Als gebruiker wil ik een upvote kunnen geven aan een Tensor Model zodat ik laat zien dat ik die interessant vind."
+    },
+    {
+        "id": "TS-FR-10",
+        "description": "Als gebruiker wil ik alle gemaakte commentaar kunnen zien van een Tensor Model zodat ik kan weten wat andere gebruikers ervan denken."
+    },
+    {
+        "id": "TS-FR-11",
+        "description": "Als gebruiker wil ik commentaar kunnen plaatsen op een Tensor Model zodat ik mijn mening over het Tensor Model kan delen met anderen."
+    },
+    {
+        "id": "TS-FR-12",
+        "description": "Als gebruiker wil ik mijn eigen commentaar kunnen bijwerken zodat ik de commentaar kan aanpassen."
+    },
+    {
+        "id": "TS-FR-13",
+        "description": "Als gebruiker wil ik mijn eigen commentaar kunnen verwijderen zodat andere gebruikers niet meer de gemaakte commentaar kunnen zien."
+    },
+    {
+        "id": "TS-FR-14",
+        "description": "Als gebruiker wil ik een commentaar kunnen upvoten zodat ik laat zien dat ik de commentaar steun."
+    },
+    {
+        "id": "TS-FR-15",
+        "description": "Als gebruiker wil ik alle issues zien van een Tensor Model zodat ik weet welke problemen er gaande zijn."
+    },
+    {
+        "id": "TS-FR-16",
+        "description": "Als gebruiker wil ik een issue aanmaken voor een Tensor Model zodat ik kan informeren welk probleem ik ben tegengelopen."
+    },
+    {
+        "id": "TS-FR-17",
+        "description": "Als gebruiker wil ik de details van een issue kunnen inzien zodat ik weet wat de issue inhoud."
+    },
+    {
+        "id": "TS-FR-18",
+        "description": "Als gebruiker wil ik een eigen issue kunnen bijwerken zodat de issue de meest up-to-date informatie bevat."
+    },
+    {
+        "id": "TS-FR-19",
+        "description": "Als gebruiker wil ik een eigen issue kunnen verwijderen zodat ik de issue niet meer kan tonen aan andere gebruikers."
+    },
+    {
+        "id": "TS-FR-20",
+        "description": "Als gebruiker wil ik een issue van een eigen gemaakte Tensor Model kunnen sluiten zodat ik andere gebruikers laat weten dat de probleem is opgelost."
+    },
+    {
+        "id": "TS-FR-21",
+        "description": "Als gebruiker wil ik een eigen gemaakte issue kunnen sluiten zodat ik andere gebruikers laat weten dat de probleem is opgelost."
+    },
+    {
+        "id": "TS-FR-22",
+        "description": "Als gebruiker wil ik commentaar kunnen plaatsen op een issue zodat ik mijn mening over het issue  kan delen met anderen."
+    }
+]

@@ -1,0 +1,6 @@
+# Workspaces
+.vscode/
+.idea/
+
+# MongoDB
+mongodb_playgrounds/

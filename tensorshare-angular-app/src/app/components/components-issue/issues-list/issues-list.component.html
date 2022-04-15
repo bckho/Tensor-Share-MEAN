@@ -1,0 +1,25 @@
+<div *ngIf="issues != undefined && issues.length > 0 && tensorModel != null">
+    <mat-list>
+        <mat-divider></mat-divider>
+        <mat-list-item *ngFor="let issue of issues">
+            <div class="issue-label issue-label-solved" *ngIf="issue.isSolved" mat-flat-button>Solved</div>
+            <div class="issue-label issue-label-open" *ngIf="!issue.isSolved" mat-flat-button>Open</div>
+
+            <a *ngIf="issue.isSolved" matLine routerLink="/{{tensorModel.user.username}}/TensorModels/{{tensorModelId}}/Issues/{{issue._id}}" mat-line
+                class="issue-item-title-solved">{{issue.title}}</a>
+            <a *ngIf="!issue.isSolved" matLine routerLink="/{{tensorModel.user.username}}/TensorModels/{{tensorModelId}}/Issues/{{issue._id}}" mat-line
+                class="issue-item-title-open">{{issue.title}}</a>
+
+            <small matLine *ngIf="!issue.isSolved">Active since {{issue.postDate | date: "dd-MM-yyyy"}}</small>
+            <small matLine *ngIf="issue.isSolved">Solved on {{issue.postDate | date: "dd-MM-yyyy"}}</small>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+    </mat-list>
+
+</div>
+<div class="issue-list-empty-display" *ngIf="issues == undefined || issues.length === 0">
+    <h2>No issues found...</h2>
+    <br />
+    <p style="color: gray;">If there's a issue, start a new one.</p>
+</div>

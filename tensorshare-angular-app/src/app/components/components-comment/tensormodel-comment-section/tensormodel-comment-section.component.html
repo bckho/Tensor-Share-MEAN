@@ -1,0 +1,26 @@
+<h1>Comments</h1>
+<div>
+    <mat-card>
+        <h3>Add comment</h3>
+        <form [formGroup]="commentForm">
+            <div class="form-group">
+                <mat-form-field style="width: 100%;" appearance="fill">
+                    <textarea matInput placeholder="write your comment here..." formControlName="content"
+                        [errorStateMatcher]="matcher"></textarea>
+                    <mat-hint>Max 100000 characters.</mat-hint>
+                    <mat-error *ngIf="commentForm.get('content')!.errors && commentForm.get('content')!.dirty">Comment
+                        not valid.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <button mat-raised-button type="button" color="accent" [disabled]="!commentForm.valid"
+                    (click)="onSubmit()">Add
+                    Comment</button>
+            </div>
+        </form>
+    </mat-card>
+</div>
+<div class="content-item">
+    <app-comment-list [comments]="comments"></app-comment-list>
+</div>

@@ -1,0 +1,29 @@
+<div *ngIf="tensorModel != undefined">
+    <mat-card>
+        <div class="container">
+            <button mat-button routerLink="/{{tensorModel.user.username}}/TensorModels/{{tensorModelId}}">Back to Tensor Model</button>
+            <mat-list>
+                <mat-list-item>
+                    <h1 matLine style="font-size: 30px">
+                        Issues
+                    </h1>
+                </mat-list-item>
+                <mat-list-item>
+                    <h2 matLine matSubheader>of Tensor Model <a
+                            routerLink="/{{tensorModel.user.username}}/TensorModels/{{tensorModelId}}">{{tensorModel.name}}</a></h2>
+                </mat-list-item>
+                <mat-list-item>
+                    <a routerLink="/{{tensorModel.user.username}}/TensorModels/{{tensorModelId}}/Issues/Create" mat-flat-button color="accent">Create
+                        new issue</a>
+                </mat-list-item>
+            </mat-list>
+            <br />
+        </div>
+
+    </mat-card>
+    <div class="content-item">
+        <div class="container">
+            <app-issues-list [issues]="issues" [tensorModel]="tensorModel"></app-issues-list>
+        </div>
+    </div>
+</div>

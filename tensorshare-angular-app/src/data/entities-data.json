@@ -1,0 +1,80 @@
+[
+    {
+        "name": "User",
+        "properties": [
+            "_id: string",
+            "username: string",
+            "password: string",
+            "dateRegistered: Date",
+            "email: string",
+            "tensorModels: TensorModel[]"
+        ]
+    },
+    {
+        "name": "Comment",
+        "properties": [
+            "_id: string",
+            "user: User",
+            "postDate: Date",
+            "content: string",
+            "commentType: CommentTypeEnum",
+            "isEdited: boolean",
+            "upvotes: string[] (list of User ObjectId's)"
+        ]
+    },
+    {
+        "name": "Issue",
+        "properties": [
+            "_id: string",
+            "title: string",
+            "description: string",
+            "postDate: Date",
+            "isSolved: boolean",
+            "closedDate: Date",
+            "user: User"
+        ]
+    },
+    {
+        "name": "TensorModel",
+        "properties": [
+            "_id: string",
+            "name: string",
+            "postDate: Date",
+            "lastUpdatedDate: Date",
+            "description: string",
+            "category: CategoryEnum",
+            "modelType: ModelTypeEnum",
+            "configuration: string[]",
+            "epochs: number",
+            "accuracy: number",
+            "loss: number",
+            "recall: number",
+            "user: User",
+            "upvotes: string[] (list of User ObjectId's)"
+        ]
+    },
+    {
+        "name": "Enum CommentTypeEnum",
+        "properties": [
+            "TensorModel = 'TensorModel'",
+            "Issue = 'Issue'"
+        ]
+    },
+    {
+        "name": "Enum ModelTypeEnum",
+        "properties": [
+            "DNN",
+            "CNN",
+            "RNN",
+            "MNN"
+        ]
+    },
+    {
+        "name": "Enum CategoryEnum",
+        "properties": [
+            "Classification",
+            "Regression",
+            "Other"
+        ]
+    }
+]

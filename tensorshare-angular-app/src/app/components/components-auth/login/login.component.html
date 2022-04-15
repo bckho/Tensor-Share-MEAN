@@ -1,0 +1,42 @@
+<div>
+    <div class="container">
+        <div class="content-item">
+            <div class="login-form">
+                <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && onSubmit()">
+                    <mat-card [class.mat-elevation-z2]="true">
+                        <h1>Sign in to your account</h1>
+                        <mat-card-content>
+                            <div class="form-group">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Username</mat-label>
+                                    <input matInput type="text" formControlName="username" />
+                                    <mat-error *ngIf="loginForm.get('username')!.errors && loginForm.get('username')!.touched">Username is required.
+                                    </mat-error>
+                                    <mat-error *ngIf="loginForm.get('username')!.errors && loginForm.get('username')!.dirty">Invalid username.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="form-group">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Password</mat-label>
+                                    <input matInput type="password" formControlName="password" />
+                                    <mat-error *ngIf="loginForm.get('password')!.errors && loginForm.get('password')!.touched">Password is required.
+                                    </mat-error>
+                                    <mat-error *ngIf="loginForm.get('password')!.errors && loginForm.get('password')!.dirty">Invalid password
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" mat-raised-button color="accent"
+                                    [disabled]="!loginForm.valid">Sign in</button>
+                            </div>
+                            <div class="form-group">
+                                <a routerLink="/Register" style="color: #FF9000;">Don't have an account yet?</a>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

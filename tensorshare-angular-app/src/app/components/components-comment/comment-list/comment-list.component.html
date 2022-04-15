@@ -1,0 +1,8 @@
+<div *ngIf=" this.comments != undefined && this.comments!.length > 0">
+  <div class="comment-item" *ngFor="let c of this.comments">
+    <app-comment [comment]="c"></app-comment>
+  </div>
+</div>
+<div class="text-center" *ngIf="this.comments?.length === 0 || this.comments == undefined">
+  <h3 style="color: gray;">No comments found.</h3>
+</div>

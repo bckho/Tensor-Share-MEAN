@@ -1,0 +1,103 @@
+image: trion/ng-cli-karma:12.2.9
+
+stages:
+  - build
+  - test
+  - code_coverage
+  - deploy_api
+  - deploy_app
+
+variables:
+  SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"
+  GIT_DEPTH: "0"
+
+cache:
+  - paths:
+    - node_modules/
+
+build_WebAPI:
+  stage: build
+  allow_failure: false
+  script:
+    - cd tensorshare_web_API
+    - npm install
+  artifacts:
+    paths:
+      - node_modules/
+
+build_WebApp:
+  stage: build
+  allow_failure: false
+  script:
+    - cd tensorshare-angular-app
+    - npm install
+    - npm build --prod
+  artifacts:
+    paths:
+      - node_modules/
+
+unit_test_WebApp:
+  stage: test
+  artifacts:
+    paths:
+      - tensorshare-angular-app/coverage
+      - tensorshare-angular-app/reports
+  allow_failure: false
+  script:
+    - cd tensorshare-angular-app
+    - npm install
+    - npm test
+
+e2e:
+  stage: test
+  allow_failure: false
+  script:
+    - cd tensorshare-angular-app
+    - npm install
+    - npm run cypress:run
+  only:
+    - main
+    - development
+
+sonarcloud_check_WebApp:
+  stage: code_coverage
+  dependencies:
+    - unit_test_WebApp
+  image:
+    name: sonarsource/sonar-scanner-cli:latest
+    entrypoint: [""]
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .sonar/cache
+  allow_failure: true
+  script:
+    - cd tensorshare-angular-app
+    - sonar-scanner
+  only:
+    - main
+    - development
+
+deploy_WebAPI:
+  stage: deploy_api
+  image: ruby:latest
+  script:
+    - cd tensorshare_web_API
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_API_APP_NAME --api-key=$HEROKU_API_KEY
+  only:
+    - main
+
+deploy_WebApp:
+  stage: deploy_app
+  image: ruby:latest
+  script:
+    - cd tensorshare-angular-app
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
+  only:
+    - main

@@ -1,0 +1,19 @@
+<div *ngIf="comment != undefined">
+    <mat-card style="background-color: rgb(247, 247, 247);">
+        <div style="padding-bottom: 7px;">
+            <span><strong>{{ comment.user.username }}</strong> commented on {{ comment.postDate | date: 'yyyy-MM-dd'}} </span>
+            <button mat-icon-button *ngIf="isFromCurrentUser()" [matMenuTriggerFor]="menu"><mat-icon style="color: #FF9000;">more_vert</mat-icon></button>
+            <mat-menu #menu="matMenu">
+                <button (click)="openUpdateDialog()" mat-menu-item>Edit</button>
+                <button (click)="onDelete()" style="color: red;" mat-menu-item>Delete</button>
+            </mat-menu>
+            <button *ngIf="!hasUpvoted()" (click)="onVote()" mat-raised-button>👍 {{comment.upvotes.length}}</button>
+            <button class="upvote-active" *ngIf="hasUpvoted()" (click)="onVote()" mat-raised-button>👍 {{comment.upvotes.length}}</button>
+        </div>
+      
+        <mat-divider></mat-divider>
+        <mat-card-content>
+            <br /><p>{{ comment.content }}</p>
+        </mat-card-content>
+    </mat-card>
+</div>

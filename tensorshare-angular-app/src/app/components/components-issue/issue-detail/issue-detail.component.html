@@ -1,0 +1,49 @@
+<div *ngIf="issue != undefined && tensorModel != undefined">
+    <mat-card>
+        <div class="container">
+            <button mat-button routerLink="/{{tensorModel.user.username}}/TensorModels/{{tensorModelId}}/Issues">Back to
+                all issues</button>
+            <mat-list>
+                <mat-list-item>
+                    <h1 matLine style="font-size: 30px">
+                        {{issue.title}}
+                    </h1>
+                    <button *ngIf="this.isFromCurrentUser()" mat-icon-button [matMenuTriggerFor]="menu">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button (click)="navigateToUpdate()" mat-menu-item>Edit</button>
+                        <button (click)="onDelete()" style="color: red" mat-menu-item>Delete</button>
+                    </mat-menu>
+                    <h2 matLine>Of Tensor Model <a routerLink="/{{tensorModel.user.username}}/TensorModels/{{tensorModelId}}">{{tensorModel.name}}</a>
+                    </h2>
+                    <h2 matLine matSubheader>Created by <a
+                            routerLink="/{{issue.user.username}}/TensorModels">{{issue.user.username}}</a></h2>
+                    <h2 matLine>Posted on {{ issue.postDate | date: 'dd-MM-yyyy' }}</h2>
+                </mat-list-item>
+                <mat-list-item>
+                    <div class="issue-label issue-label-solved" *ngIf="issue.isSolved" mat-flat-button>Solved</div>
+                    <div class="issue-label issue-label-open" *ngIf="!issue.isSolved" mat-flat-button>Open</div>
+                    <button *ngIf="!issue.isSolved && this.isOwner()" (click)="onCloseIssue()" mat-button style="color: #8250df">Set to
+                        solved</button>
+                    <span *ngIf="issue.isSolved" style="padding-left: 5px;">Solved on {{ issue.closedDate | date:
+                        'dd-MM-yyyy'}}</span>
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </mat-card>
+    <div class="container">
+        <div class="content-item">
+            <mat-card>
+                <h2>Description</h2>
+                <mat-card-content>
+                    <p>{{issue.description}}</p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="content-item">
+            <app-issue-comment-section [issueId]="this.issue._id" [comments]="this.comments">
+            </app-issue-comment-section>
+        </div>
+    </div>
+</div>

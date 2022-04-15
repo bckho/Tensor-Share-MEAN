@@ -1,0 +1,12 @@
+<table *ngIf="this.entity != undefined && this.entity != null" class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="color-purple" scope="col">{{ entity.name }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of entity.properties">
+            <td class="color-grey4">{{ p }}</td>
+        </tr>
+    </tbody>
+</table>

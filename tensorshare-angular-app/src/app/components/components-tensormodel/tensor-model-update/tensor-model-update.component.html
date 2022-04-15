@@ -1,0 +1,153 @@
+<div *ngIf="this.tensorModel != null && this.tensorModel != undefined">
+    <div class="container">
+        <div class="content-item">
+            <div class="update-form">
+                <div class="row">
+                    <div class="col">
+                        <form [formGroup]="tensorModelForm!" (ngSubmit)="tensorModelForm!.valid && onSubmit()">
+                            <mat-card class="form-card-content" [class.mat-elevation-z2]="true">
+                                <mat-card-content>
+                                    <div class="form-group">
+                                        <h1>Update Tensor Model '{{tensorModel!.name}}'</h1>
+                                    </div>
+                                </mat-card-content>
+
+                                <div class="row">
+
+                                    <div class="col">
+                                        <mat-card-content class="form-card">
+                                            <div class="form-group">
+                                                <mat-form-field appearance="fill">
+                                                    <mat-label>Name</mat-label>
+                                                    <input matInput type="text" formControlName="name" />
+                                                    <mat-error
+                                                        *ngIf="tensorModelForm!.get('name')!.errors && !tensorModelForm!.get('name')!.touched">
+                                                        name is required.
+                                                    </mat-error>
+                                                    <mat-error
+                                                        *ngIf="tensorModelForm!.get('name')!.errors && tensorModelForm!.get('name')!.dirty">
+                                                        name is not valid.
+                                                    </mat-error>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="form-group">
+                                                <mat-form-field appearance="fill">
+                                                    <mat-label>Description</mat-label>
+                                                    <textarea matInput formControlName="description"></textarea>
+                                                    <mat-error
+                                                        *ngIf="tensorModelForm!.get('description')!.errors && tensorModelForm!.get('description')!.dirty">
+                                                        description character count exceeded (max 100000 characters).
+                                                    </mat-error>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="form-group">
+                                                <mat-form-field appearance="fill">
+                                                    <mat-label>Category</mat-label>
+                                                    <mat-select formControlName="category">
+                                                        <mat-option *ngFor="let cat of categories"
+                                                            [value]="categories.indexOf(cat)">{{cat}}</mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="form-group">
+                                                <mat-form-field appearance="fill">
+                                                    <mat-label>Model type</mat-label>
+                                                    <mat-select formControlName="modelType">
+                                                        <mat-option *ngFor="let m of modelTypes"
+                                                            [value]="modelTypes.indexOf(m)">{{m}}</mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                        </mat-card-content>
+                                    </div>
+
+                                    <div class="col">
+                                        <mat-card-content class="form-card">
+                                            <div class="form-group">
+                                                <mat-form-field appearance="fill">
+                                                    <mat-label>Epochs</mat-label>
+                                                    <input matInput type="number" formControlName="epochs" />
+                                                    <mat-hint>Value between -100 and 100</mat-hint>
+                                                    <mat-error *ngIf="tensorModelForm!.get('epochs')!.errors">Epochs is
+                                                        not valid.
+                                                    </mat-error>
+
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="form-group">
+                                                <mat-form-field appearance="fill">
+                                                    <mat-label>Accuracy</mat-label>
+                                                    <input matInput type="number" formControlName="accuracy" />
+                                                    <mat-hint>Value between -100 and 100</mat-hint>
+                                                    <mat-error *ngIf="tensorModelForm!.get('accuracy')!.errors">Accuracy
+                                                        is not valid.
+                                                    </mat-error>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="form-group">
+                                                <mat-form-field appearance="fill">
+                                                    <mat-label>Loss</mat-label>
+                                                    <input matInput type="number" formControlName="loss" />
+                                                    <mat-hint>Value between -100 and 100</mat-hint>
+                                                    <mat-error *ngIf="tensorModelForm!.get('loss')!.errors">Loss is not
+                                                        valid.
+                                                    </mat-error>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="form-group">
+                                                <mat-form-field appearance="fill">
+                                                    <mat-label>Recall</mat-label>
+                                                    <input matInput type="number" formControlName="recall" />
+                                                    <mat-hint>Value between -100 and 100</mat-hint>
+                                                    <mat-error *ngIf="tensorModelForm!.get('recall')!.errors">Recall is
+                                                        not valid.
+                                                    </mat-error>
+                                                </mat-form-field>
+                                            </div>
+                                        </mat-card-content>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <mat-card-content class="form-card">
+
+                                            <mat-form-field appearance="fill" style="width: 100%;">
+                                                <mat-label>Configuration</mat-label>
+                                                <textarea matInput style="width: 100%;" placeholder="Your configuration"
+                                                    formControlName="configuration"></textarea>
+
+                                                <mat-error *ngIf="tensorModelForm!.get('configuration')!.errors">
+                                                    Configuration is not valid.
+
+                                                </mat-error>
+                                                <mat-hint><br />Must be in this format: ["Layer1","Layer2","Layer3"]
+                                                    <br />(no space after the comma)</mat-hint>
+                                            </mat-form-field>
+
+                                        </mat-card-content>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <mat-card-content class="form-card">
+                                            <div class="form-group">
+                                                <button type="button" routerLink="/{{this.tensorModel.user.username}}/TensorModels/{{this.tensorModelId}}"
+                                                    mat-raised-button>Cancel</button>
+
+                                                <button type="submit" mat-raised-button color="accent"
+                                                    [disabled]="!tensorModelForm!.valid">Update</button>
+                                            </div>
+                                        </mat-card-content>
+                                    </div>
+                                </div>
+
+                            </mat-card>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

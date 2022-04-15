@@ -1,0 +1,17 @@
+<mat-toolbar class="navbar-tool">
+    <button routerLink="/" mat-button color="primary"><img src="../../../assets/logo1.png" width="50px"
+            height="50px" /></button>
+    <span routerLink="/" style="color: #ffffff; cursor: pointer;">TensorShare</span>
+    <button routerLink="/Explore" *ngIf="hasToken && user != null" mat-button style="color: white;">Explore</button>
+    <span class="example-spacer"></span>
+    <button routerLink="/Login" *ngIf="!hasToken" mat-button style="color: white;">Sign in</button>
+    <button (click)="onSignOut()" *ngIf="hasToken" mat-button style="color: white;">Sign out</button>
+    <button routerLink="/{{user.username}}/TensorModels" *ngIf="hasToken && user != null" mat-button
+        style="color: white;">Account</button>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon style="color: white;">menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button routerLink="/About" mat-menu-item>About</button>
+    </mat-menu>
+</mat-toolbar>

@@ -1,0 +1,10 @@
+<div class="container">
+    <mat-list>
+        <mat-list-item>
+            <h1 matLine>Explore other Tensor Models</h1>
+            <button routerLink="/TensorModels/Create" mat-raised-button color="accent">Create
+                new Tensor Model</button>
+        </mat-list-item>
+    </mat-list>
+    <app-tensor-model-list [tensorModels]="tensorModels"></app-tensor-model-list>
+</div>

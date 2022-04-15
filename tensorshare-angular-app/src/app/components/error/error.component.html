@@ -1,0 +1,11 @@
+<div class="mt-5">
+    <div class="text-center mt-3">
+        <h1 class="text-center">404</h1>
+        <h3 matSubheader>Could not find resource.</h3>
+    </div>
+    <div class="mt-3 text-center">
+        <a *ngIf="isAuthenticated()" mat-raised-button color="accent"
+            routerLink="/{{getCurrentUsername()}}/TensorModels">Back to your account</a>
+        <a *ngIf="!isAuthenticated()" mat-raised-button color="accent" routerLink="/">Back to homepage</a>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+.tensor-item-logo-box {
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 5px !important;
+  border-width: thin !important;
+  border-color: grey !important;
+  background-color: khaki;
+}
+
+.tensor-item-logo-box:hover {
+  cursor: pointer;
+}
+
+.tensor-item-title {
+  color: black;
+}
+
+.tensor-item-description {
+  color: grey;
+}
+
+.tensor-list-empty-display {
+  padding: 70px 0;
+  text-align: center;
+}
+
+.tensor-item-name {
+  font-weight: 575;
+}

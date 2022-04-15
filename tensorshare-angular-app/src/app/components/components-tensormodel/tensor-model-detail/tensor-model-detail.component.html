@@ -1,0 +1,126 @@
+<div *ngIf="tensorModel != undefined">
+    <mat-card>
+        <div class="container">
+            <button mat-button routerLink="/Explore">Back to all Tensor Models</button>
+            <mat-list>
+                <mat-list-item>
+                    <h1 mat-line style="font-size: 30px">
+                        {{ tensorModel.name }}
+                    </h1>
+                    <button *ngIf="isFromCurrentUser()" mat-icon-button [matMenuTriggerFor]="menu">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button (click)="navigateToUpdate()" mat-menu-item>Edit</button>
+                        <button (click)="onRequestDelete()" style="color: red" mat-menu-item>Delete</button>
+                    </mat-menu>
+                </mat-list-item>
+                <mat-list-item>
+                    <h2 matLine matSubheader>Posted by <a
+                            routerLink="/{{tensorModel.user.username}}/TensorModels">{{
+                            tensorModel.user.username }}</a></h2>
+
+                    <button *ngIf="!hasUpvoted()" (click)="onVote()" mat-raised-button>👍
+                        {{tensorModel.upvotes.length}}</button>
+                    <button class="upvote-active" *ngIf="hasUpvoted()" (click)="onVote()" mat-raised-button>👍
+                        {{tensorModel.upvotes.length}}</button>
+                </mat-list-item>
+                <mat-list-item>
+                    <h2 matLine>Date posted: {{ this.tensorModel.postDate | date: 'dd-MM-yyyy' }}</h2>
+                    <h2 matLine>Last updated: {{ this.tensorModel.lastUpdatedDate | date: 'dd-MM-yyyy' }}</h2>
+                    <h2 matLine>Category: <strong>{{ getCategoryTypeValue(tensorModel.category) }}</strong></h2>
+                    <button mat-flat-button color="primary" routerLink="/{{this.tensorModel.user.username}}/TensorModels/{{this.tensorModelId}}/Issues">View
+                        issues</button>
+                </mat-list-item>
+            </mat-list>
+        </div>
+
+    </mat-card>
+    <div class="container">
+        <div class="content-item">
+            <mat-card>
+                <h2>Description</h2>
+                <mat-card-content>
+                    <p>{{ tensorModel.description }}</p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="content-item">
+            <div class="row">
+                <div class="col-md-6 content-item">
+                    <mat-card>
+                        <div>
+                            <h2>Configuration</h2>
+                            <span>Model type:
+                                {{ getModelTypeValue(tensorModel.modelType) }}</span>
+                            <br /><small>Configuration is shown in layers</small>
+                        </div>
+                        <div>
+                            <mat-card *ngIf="tensorModel.configuration.length > 0">
+                                <mat-list>
+                                    <mat-list-item mat-line *ngFor="let x of tensorModel.configuration">
+                                        {{ x }}
+                                        <mat-divider></mat-divider>
+                                    </mat-list-item>
+                                </mat-list>
+                            </mat-card>
+                        </div>
+                    </mat-card>
+                </div>
+                <div class="col-md-6 content-item">
+                    <mat-card>
+                        <div>
+                            <h2>Stated metrics</h2>
+                        </div>
+                        <div>
+                            <mat-card-content>
+                                <div class="row">
+                                    <div class="col">
+                                        <mat-card>
+                                            <h3 class="text-center">Epochs</h3>
+                                            <mat-card-content class="text-center" style="font-size: 30px">
+                                                {{ tensorModel.epochs }}
+                                            </mat-card-content>
+                                        </mat-card>
+                                    </div>
+                                    <div class="col">
+                                        <mat-card>
+                                            <h3 class="text-center">Accuracy</h3>
+                                            <mat-card-content class="text-center" style="font-size: 30px">
+                                                {{ tensorModel.accuracy }}
+                                            </mat-card-content>
+                                        </mat-card>
+                                    </div>
+                                </div>
+                            </mat-card-content>
+                            <mat-card-content>
+                                <div class="row">
+                                    <div class="col">
+                                        <mat-card>
+                                            <h3 class="text-center">Loss</h3>
+                                            <mat-card-content class="text-center" style="font-size: 30px">
+                                                {{ tensorModel.loss }}
+                                            </mat-card-content>
+                                        </mat-card>
+                                    </div>
+                                    <div class="col">
+                                        <mat-card>
+                                            <h3 class="text-center">Recall</h3>
+                                            <mat-card-content class="text-center" style="font-size: 30px">
+                                                {{ tensorModel.recall }}
+                                            </mat-card-content>
+                                        </mat-card>
+                                    </div>
+                                </div>
+                            </mat-card-content>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="this.comments != undefined" class="content-item">
+            <app-tensormodel-comment-section [comments]="this.comments" [tensorModelId]="this.tensorModel._id">
+            </app-tensormodel-comment-section>
+        </div>
+    </div>
+</div>

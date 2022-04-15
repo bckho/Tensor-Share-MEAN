@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Update comment</h1>
+<form [formGroup]="updateForm" (ngSubmit)="updateForm.valid && onSubmit()">
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill">
+      <mat-label>content</mat-label>
+      <textarea matInput formControlName="content"></textarea>
+      <mat-error *ngIf="updateForm.get('content')!.errors && updateForm.get('content')!.dirty">comment is not valid.
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+      <button mat-dialog-close mat-button (click)="onNoClick()">Cancel</button>
+      <button [disabled]="!updateForm.valid" mat-flat-button color="accent" type="submit">
+        Update
+      </button>
+  </div>
+</form>

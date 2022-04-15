@@ -1,0 +1,17 @@
+.issue-item-title-open {
+    color: #2c974b
+}
+
+.issue-item-title-solved {
+    color: #8250df
+}
+
+.issue-list-empty-display {
+    padding: 70px 0;
+    text-align: center;
+}
+
+.issue-item {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
